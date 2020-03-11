@@ -1,21 +1,38 @@
 package controllers
 
+import com.google.gson.FieldNamingPolicy
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import domains.User
 import services.MongoService
+import services.UtilsService
 import spark.Request
 import spark.Response
-import java.security.SecureRandom
 
 class UserController(){
     val mongoService = MongoService()
+    val utilsService = UtilsService()
+    val gsonUs : Gson= GsonBuilder()
+            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+            .create()
 
     val getById = { req: Request, res: Response ->
         "working"
     }
 
     val createUser = { req: Request, res: Response ->
-        val randomNmb = SecureRandom().nextInt(2000)
+        val newId = utilsService.generateRandomUserId()
 
-        mongoService.save(randomNmb.toLong())
+        val userData = req.body()
+
+        val mapUser = gsonUs.fromJson(userData, HashMap::class.java)
+                .plus(mapOf("id" to newId))
+
+        //val finalUser = User(mapUser.)
+
+        println("User body: ${mapUser}")
+        //mongoService.save(newId);
+
         "working"
     }
 }

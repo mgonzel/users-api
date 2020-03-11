@@ -32,6 +32,7 @@ dependencies {
     // compile 'org.litote.kmongo:kmongo:3.12.2'
     // https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver
     compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.12.1'
+    compile 'com.google.code.gson:gson:2.8.2'
 
 }
 compileKotlin {

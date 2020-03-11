@@ -14,6 +14,6 @@ data class User (
         // Personal info
         val first_name: String,
         val last_name: String,
-        
+
         val status: String
 )

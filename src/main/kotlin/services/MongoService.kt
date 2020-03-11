@@ -1,6 +1,7 @@
 package services
 
 import com.mongodb.MongoClient
+import domains.User
 import org.bson.Document
 
 class MongoService () {
@@ -10,8 +11,8 @@ class MongoService () {
         mongoClient.getDatabase("users_db").getCollection("users").find()
     }
 
-    fun save(userId: Long) {
-        val data = mapOf("id" to "$userId", "value" to "test")
+    fun save(user: User) {
+        val data = mapOf("id" to "${user.id}", "value" to "test")
         mongoClient.getDatabase("users_db")
                 .getCollection("users")
                 .insertOne(Document(data))
