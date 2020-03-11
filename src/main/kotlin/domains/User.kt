@@ -16,4 +16,11 @@ data class User (
         val last_name: String,
 
         val status: String
-)
+) {
+    fun validate() : Boolean{
+        if (id == null || country == null || doc_type == null || doc_number == null ||
+                email == null || phone == null || first_name == null || last_name == null)
+            return false
+        return true
+    }
+}

@@ -26,12 +26,15 @@ class UserController(){
         val userData = req.body()
 
         val mapUser = gsonUs.fromJson(userData, HashMap::class.java)
-                .plus(mapOf("id" to newId))
+                .plus(mapOf("id" to newId)) as Map<String, String>
 
-        //val finalUser = User(mapUser.)
+        val finalUser = gsonUs.fromJson(gsonUs.toJson(mapUser),User::class.java)
+
 
         println("User body: ${mapUser}")
-        //mongoService.save(newId);
+        if (finalUser.validate()) {
+            mongoService.save(mapUser)
+        };
 
         "working"
     }

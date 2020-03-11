@@ -11,10 +11,9 @@ class MongoService () {
         mongoClient.getDatabase("users_db").getCollection("users").find()
     }
 
-    fun save(user: User) {
-        val data = mapOf("id" to "${user.id}", "value" to "test")
+    fun save(user: Map<String, String>) {
         mongoClient.getDatabase("users_db")
                 .getCollection("users")
-                .insertOne(Document(data))
+                .insertOne(Document(user))
     }
 }
