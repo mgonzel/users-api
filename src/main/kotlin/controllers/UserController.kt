@@ -33,10 +33,15 @@ class UserController(){
 
 
         println("User body: ${mapUser}")
+        res.header("Content-type", "application/json")
         if (finalUser.validate()) {
             mongoService.save(mapUser)
-        };
 
-        "working"
+            res.status(201)
+            """${gsonUs.toJson(finalUser)}"""
+        } else {
+            res.status(400)
+            """{"status":"error","message":"invalid body"}"""
+        }
     }
 }

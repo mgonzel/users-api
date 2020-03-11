@@ -19,7 +19,8 @@ data class User (
 ) {
     fun validate() : Boolean{
         if (id == null || country == null || doc_type == null || doc_number == null ||
-                email == null || phone == null || first_name == null || last_name == null)
+                email == null || phone == null || first_name == null || last_name == null ||
+                status == null)
             return false
         return true
     }

@@ -16,9 +16,9 @@ class MongoService () {
                 .toString()
     }
 
-    fun save(user: Map<String, String>) {
+    fun save(toSaveData: Map<String, Any>) {
         mongoClient.getDatabase("users_db")
                 .getCollection("users")
-                .insertOne(Document(user))
+                .insertOne(Document(toSaveData))
     }
 }
