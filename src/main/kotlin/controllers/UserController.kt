@@ -17,7 +17,8 @@ class UserController(){
             .create()
 
     val getById = { req: Request, res: Response ->
-        "working"
+        mongoService.findUser(req.params("userId"))
+        //"working"
     }
 
     val createUser = { req: Request, res: Response ->
