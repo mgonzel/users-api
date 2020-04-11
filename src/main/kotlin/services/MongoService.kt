@@ -32,8 +32,8 @@ class MongoService (
     }
     private fun find (query: Map <String, String>) : List<Document?> {
         val queryDoc = createQuery(query)
-        return mongoClient.getDatabase("users_db")
-                .getCollection("users")
+        return mongoClient.getDatabase(databaseName)
+                .getCollection(collection)
                 .find(queryDoc).projection(Document("_id", 0)).toList()
     }
 
