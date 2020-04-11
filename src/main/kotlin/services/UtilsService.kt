@@ -4,7 +4,7 @@ import java.security.SecureRandom
 import java.util.Base64
 import java.util.Scanner
 
-val DEFAULT_RANDOM_NAME_LENGTH = 32;
+val DEFAULT_RANDOM_NAME_LENGTH = 8;
 
 public class UtilsService { 
 	val strChain : String = "lgwjzc7bxf9rs6dha2i8ven3t45q1kuypom0";
